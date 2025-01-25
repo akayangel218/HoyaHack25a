@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ImageUploader = () => {
+const ApiClassifier = () => {
   const [image, setImage] = useState(null);
 
   const handleImageUpload = (event) => {
@@ -36,4 +36,4 @@ const ImageUploader = () => {
   );
 };
 
-export default ImageUploader;
+export default ApiClassifier;
