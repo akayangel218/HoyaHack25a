@@ -2,13 +2,20 @@ import React, { useState } from "react";
 
 const ApiClassifier = () => {
   const [image, setImage] = useState(null);
+  const [huggingClassification, setHuggingClassification] = useState("");
 
-  const handleImageUpload = (event) => {
+  async function handleImageUpload(event) {
     const file = event.target.files[0];
+    // console.log(file)
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
     }
+    huggingFaceQuery(file).then((response) => {
+      console.log(JSON.stringify(response));
+      console.log(response[0].label)
+      setHuggingClassification(JSON.parse(JSON.stringify(response[0].label)))
+    });
   };
 
   return (
@@ -31,9 +38,33 @@ const ApiClassifier = () => {
             />
           </div>
         )}
+        <div>
+          <h1>This is according to HuggingFace: -- {huggingClassification}</h1>
+        </div>
       </div>
     </div>
   );
 };
+
+
+async function huggingFaceQuery(imageFile) {
+	const data = imageFile
+	const response = await fetch(
+		"https://api-inference.huggingface.co/models/Anwarkh1/Skin_Cancer-Image_Classification",
+		{
+			headers: {
+				Authorization: "Bearer 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",
+				"Content-Type": "application/json",
+			},
+			method: "POST",
+			body: data,
+		}
+	);
+	const result = await response.json();
+	return result;
+}
+
+
+
 
 export default ApiClassifier;
