@@ -1,0 +1,37 @@
+.sign-in-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(216.85% 187.79% at 133.27% 171.89%, #ABC4FF 0%, #FFF 100%);
+}
+
+.sign-in-page img {
+  width: fit-content;
+}
+
+.sign-in-page form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.sign-in-page__input {
+}
+
+.sign-in-page__input input {
+  width: 550px;
+  height: 60px;
+  padding: 0px 30px;
+  border: 1px solid var(--secondary-text-color);
+  border-radius: 8px;
+  color: var(--primary-text-color);
+  font-size: 1rem;
+}
+
+.sign-in-page p {
+  margin: 0;
+  font-weight: 300;
+}

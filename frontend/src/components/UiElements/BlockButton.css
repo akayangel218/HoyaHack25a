@@ -1,0 +1,8 @@
+.block-button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: .25rem;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
