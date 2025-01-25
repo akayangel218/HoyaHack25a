@@ -39,6 +39,8 @@ const ImageUpload = () => {
     );
   };
 
+  
+
 
 
 export default Scanner;
