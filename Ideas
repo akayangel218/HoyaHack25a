@@ -1,4 +1,22 @@
 # Ideas
 
 - Patzip: Track Health Conditions by Zip Code
+
 - SafeLabs: Reducing hospital acquired infection
+
+- An app that scans a prescription or medication label and checks for:
+Drug interactions
+Allergies (based on user profile)
+Dosage errors
+Features:
+Barcode/QR code scanner for medication
+Alerts for high-risk medications
+Pill reminder for patients to take their medication correctly
+
+- Solution: An app where patients log allergies, and hospital staff or family can scan meal or medicine labels to ensure they’re allergen-free.
+Features:
+Food label scanning for allergens
+Alerts for hidden allergenic ingredients
+Educational resources about managing allergies
+
+- 
