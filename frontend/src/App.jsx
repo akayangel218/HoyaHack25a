@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 import LandingPage from './pages/LandingPage/LandingPage'
 import ApiClassifier from './pages/ApiPage/ApiClassifier'
+import Scanner from './pages/Scanner/Scanner'
 
 function App() {
   const [count, setCount] = useState(0)
