@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />}/>
         <Route path="/apiClassifier" element={<ApiClassifier />} />
+        <Route path="/scanner" element={<Scanner />} />
       </Routes>
     </Router>
     </>
