@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ImageUpload = () => {
+const Scanner = () => {
     const [image, setImage] = useState(null);
   
     // Handle the file change
