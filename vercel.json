@@ -1,0 +1,19 @@
+{
+    "builds": [
+      {
+        "src": "frontend/package.json",
+        "use": "@vercel/node",
+        "config": {
+          "distDir": "frontend/dist"
+        }
+      }
+    ],
+    "outputDirectory": "frontend/dist",
+    "rewrites": [
+        {
+        "source": "/(.*)",
+        "destination": "/index.html"
+        }
+    ]
+  }
+  
