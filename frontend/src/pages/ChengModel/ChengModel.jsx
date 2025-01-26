@@ -16,7 +16,7 @@ const ChengModel = () => {
     const formData = new FormData();
     formData.append('image', file);
 
-    fetch('http://localhost:5000/chengml/upload', {
+    fetch('https://hoyahacks25backend.onrender.com/chengml/upload', {
       method: 'POST',
       body: formData
     })
