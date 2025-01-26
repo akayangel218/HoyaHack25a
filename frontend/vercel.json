@@ -2,14 +2,14 @@
 {
     "builds": [
       {
-        "src": "app/package.json",
+        "src": "frontend/package.json",
         "use": "@vercel/node",
         "config": {
-          "distDir": "app/dist"
+          "distDir": "frontend/dist"
         }
       }
     ],
-    "outputDirectory": "app/dist",
+    "outputDirectory": "frontend/dist",
     "rewrites": [
         {
         "source": "/(.*)",
