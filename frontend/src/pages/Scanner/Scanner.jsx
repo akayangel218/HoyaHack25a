@@ -14,6 +14,46 @@ const Scanner = () => {
     }
   };
 
+  // Function to categorize extracted text
+  const categorizeText = (text) => {
+    const lines = text.split("\n");
+
+    let number = "";
+    let name = "";
+    let medicine = "";
+    let dosage = "";
+    let frequency = "";
+
+    // Regular expressions for matching common patterns
+    const numberRegex = /\b(?:prescription|rx)\s*(\d+)\b/i;
+    const nameRegex = /\b(?:patient|name)\s*[:\-]?\s*([A-Za-z\s]+)\b/i;
+    const dosageRegex = /\b(?:dosage|dose)\s*[:\-]?\s*(\d+(\s*mg|\s*ml)?)\b/i;
+    const frequencyRegex = /\b(?:frequency|take)\s*[:\-]?\s*(\d+\s*(?:times|per)\s*(?:day|week))\b/i;
+    const medicineRegex = /\b(?:medicine|drug)\s*[:\-]?\s*([A-Za-z\s]+(?:\s*\d+)?(?:\s*[A-Za-z]+)*)\b/i;
+
+    lines.forEach((line) => {
+      if (numberRegex.test(line)) {
+        number = line.match(numberRegex)[1];
+      } else if (nameRegex.test(line)) {
+        name = line.match(nameRegex)[1];
+      } else if (dosageRegex.test(line)) {
+        dosage = line.match(dosageRegex)[1];
+      } else if (frequencyRegex.test(line)) {
+        frequency = line.match(frequencyRegex)[1];
+      } else if (medicineRegex.test(line)) {
+        medicine = line.match(medicineRegex)[1];
+      }
+    });
+
+    return {
+      number,
+      name,
+      medicine,
+      dosage,
+      frequency,
+    };
+  };
+
   // Handle the OCR scan
   const handleOCRScan = () => {
     if (image) {
@@ -23,6 +63,25 @@ const Scanner = () => {
       })
         .then(({ data: { text } }) => {
           setExtractedText(text);
+          const categorizedData = categorizeText(text);
+          console.log(categorizedData); // Log the categorized data
+
+          // Now send the data to the backend to store in the database
+          fetch("http://localhost:5000/api/scan", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(categorizedData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Data saved:", data);
+            })
+            .catch((error) => {
+              console.error("Error saving data:", error);
+            });
+
           setLoading(false);
         })
         .catch((error) => {
@@ -32,7 +91,7 @@ const Scanner = () => {
     }
   };
 
-  // Handle the form submission (for uploading to a server)
+  // Handle the file upload
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("image", image); // assuming the key is 'image'
