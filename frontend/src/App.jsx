@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './pages/LandingPage/LandingPage'
 import ApiClassifier from './pages/ApiPage/ApiClassifier'
 import SignInPage from './pages/SignInPage/SignInPage.jsx';
-import Scanner from './pages/Scanner/Scanner'
 import NavLayout from './layouts/NavLayout.jsx';
 import ClassifierCheng from "./pages/ClassifierCheng/ClassifierCheng.jsx";
+import Scanner from "./pages/Scanner/Scanner";
 
 function App() {
 
@@ -29,6 +29,9 @@ function App() {
         },
         {
           path: '/chengclassifier', element: <ClassifierCheng />
+        },
+        {
+          path: '/scanner', element: <Scanner />
         },
 
       ]

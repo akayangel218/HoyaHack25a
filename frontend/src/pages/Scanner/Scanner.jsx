@@ -67,7 +67,7 @@ const Scanner = () => {
           console.log(categorizedData); // Log the categorized data
 
           // Now send the data to the backend to store in the database
-          fetch("http://localhost:5000/api/scan", {
+          fetch("https://hoyahacks25backend.onrender.com/api/scan", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

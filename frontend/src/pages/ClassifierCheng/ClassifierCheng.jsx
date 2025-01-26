@@ -68,7 +68,8 @@ const ClassifierCheng = () => {
         // fetch from backend
       const response = await fetch('https://hoyahacks25backend.onrender.com/chengml/upload', {
         method: 'POST',
-        body: formData
+        body: formData,
+        mode: 'no-cors'
       })
 
       
