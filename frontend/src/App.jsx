@@ -1,24 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LandingPage from './pages/LandingPage/LandingPage'
 import ApiClassifier from './pages/ApiPage/ApiClassifier'
 import SignInPage from './pages/SignInPage/SignInPage.jsx';
 import Scanner from './pages/Scanner/Scanner'
+import NavLayout from './layouts/NavLayout.jsx';
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: '/login',
+      element: <SignInPage />,
+    },
+    {
+      path: '/sign-up',
+      element: <SignInPage />,
+    },
+    {
+      path: '/',
+      element: <NavLayout />,
+      children: [
+        { path: '/', element: <LandingPage /> ,
+        },
+        {
+          path: '/classifier', element: <ApiClassifier />
+        }
+      ]
+    },
+  ]);
+
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path="/" element={<SignInPage />}/>
-        <Route path="/apiClassifier" element={<ApiClassifier />} />
-        <Route path="/scanner" element={<Scanner />} />
-      </Routes>
-    </Router>
+      <RouterProvider router={router}></RouterProvider>
     </>
   )
 }

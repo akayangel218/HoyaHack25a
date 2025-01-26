@@ -8,6 +8,8 @@
   --primary-text-color: #000000;
   --secondary-text-color: #6D6D6D;
 
+  --primary-color-light: #2E4689;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
