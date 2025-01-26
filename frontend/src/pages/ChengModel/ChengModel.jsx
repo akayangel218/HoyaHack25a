@@ -1,16 +1,49 @@
 import React, { useState } from "react";
+import * as tf from '@tensorflow/tfjs';
 
 const ChengModel = () => {
   const [image, setImage] = useState(null);
+  const [chengClassification, setChengClassification] = useState("");
 
   async function handleImageUpload(event) {
     const file = event.target.files[0];
-    
+
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
     }
-  };
+    // Create a FormData object to send the file
+    const formData = new FormData();
+    formData.append('image', file);
+
+    fetch('http://localhost:5000/chengml/upload', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle the response from the backend
+      console.log(data.predicted_class);
+      
+      const diseaseDictionary = {
+        "0": "Actinic keratosis",
+        "1": "Basal cell carcinoma",
+        "2": "Benign keratosis",
+        "3": "Dermatofibroma",
+        "4": "Melanocytic nevus",
+        "5": "Melanoma",
+        "6": "Squamous cell carcinoma",
+        "7": "Vascular lesion"
+      };
+
+      setChengClassification(diseaseDictionary[data.predicted_class])
+
+    })
+    .catch(error => {
+      // Handle any errors
+      console.error(error);
+    });
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -32,11 +65,10 @@ const ChengModel = () => {
             />
           </div>
         )}
-        
+        <h1>Chengs Classification is: -- {chengClassification}</h1>
       </div>
     </div>
   );
 };
-
 
 export default ChengModel;
