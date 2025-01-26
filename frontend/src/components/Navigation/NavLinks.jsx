@@ -12,7 +12,12 @@ return (
     </li>
     <li>
       <NavLink to="/classifier">
-        Classifier Took
+        Web Classifier Tool
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/chengclassifier">
+        VisionMD Classifier Tool
       </NavLink>
     </li>
   </ul>

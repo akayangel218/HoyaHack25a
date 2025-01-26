@@ -5,7 +5,7 @@ import ApiClassifier from './pages/ApiPage/ApiClassifier'
 import SignInPage from './pages/SignInPage/SignInPage.jsx';
 import Scanner from './pages/Scanner/Scanner'
 import NavLayout from './layouts/NavLayout.jsx';
-import ChengModel from './pages/ChengModel/ChengModel';
+import ClassifierCheng from "./pages/ClassifierCheng/ClassifierCheng.jsx";
 
 function App() {
 
@@ -26,7 +26,11 @@ function App() {
         },
         {
           path: '/classifier', element: <ApiClassifier />
-        }
+        },
+        {
+          path: '/chengclassifier', element: <ClassifierCheng />
+        },
+
       ]
     },
   ]);
