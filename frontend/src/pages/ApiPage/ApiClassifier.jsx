@@ -111,8 +111,4 @@ const ApiClassifier = () => {
   );
 };
 
-
 export default ApiClassifier;
-
-/*
-*/
