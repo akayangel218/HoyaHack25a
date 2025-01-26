@@ -64,7 +64,4 @@ async function huggingFaceQuery(imageFile) {
 	return result;
 }
 
-
-
-
 export default ApiClassifier;
