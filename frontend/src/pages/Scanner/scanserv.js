@@ -1,6 +1,6 @@
-const express = require("express");
-const sqlite3 = require("sqlite3").verbose();
-const cors = require("cors");
+import express from 'express'
+import sqlite3 from 'sqlite3'
+import cors from 'cors'
 
 const app = express();
 const port = 5000;
@@ -17,7 +17,7 @@ app.post("/api/scan", (req, res) => {
   const { number, name, medicine, dosage, frequency } = req.body;
 
   // Prepare the SQL query to insert data
-  const sql = `INSERT INTO prescriptions (number, name, medicine, dosage, frequency) VALUES (?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO prescripts (number, name, medicine, dosage, frequency) VALUES (?, ?, ?, ?, ?)`;
 
   // Run the query to insert data
   db.run(sql, [number, name, medicine, dosage, frequency], function (err) {
