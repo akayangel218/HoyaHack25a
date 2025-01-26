@@ -55,26 +55,25 @@ const Scanner = () => {
   };
 
   // Handle the OCR scan
-  const handleOCRScan = () => {
+  async function handleOCRScan() {
     if (image) {
       setLoading(true);
-      Tesseract.recognize(image, "eng", {
+      const recognized = await Tesseract.recognize(image, "eng", {
         logger: (info) => console.log(info), // Optional: Log progress
       })
-        .then(({ data: { text } }) => {
-          setExtractedText(text);
-          const categorizedData = categorizeText(text);
-          console.log(categorizedData); // Log the categorized data
+      const text = await recognized.data.text
+        // .then(({ data: { text } }) => {
+      const categorizedData = categorizeText(text);
+      //   //   console.log(categorizedData); // Log the categorized data
 
           // Now send the data to the backend to store in the database
-          fetch("https://hoyahacks25backend.onrender.com/api/scan", {
+          const formData = new FormData();
+          formData.append('json', JSON.stringify(categorizedData));
+          const response = await fetch("http://10.150.237.146:5000/scan", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(categorizedData),
+            body: formData,
           })
-            .then((response) => response.json())
+          const result  = await response.json()
             .then((data) => {
               console.log("Data saved:", data);
             })
@@ -83,11 +82,6 @@ const Scanner = () => {
             });
 
           setLoading(false);
-        })
-        .catch((error) => {
-          console.error("OCR failed:", error);
-          setLoading(false);
-        });
     }
   };
 

@@ -20,11 +20,11 @@ return (
         VisionMD Classifier Tool
       </NavLink>
     </li>
-    <li>
+    {/* <li>
       <NavLink to="/scanner">
         Scanner
       </NavLink>
-    </li>
+    </li> */}
   </ul>
 )
 }

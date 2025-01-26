@@ -30,9 +30,9 @@ function App() {
         {
           path: '/chengclassifier', element: <ClassifierCheng />
         },
-        {
-          path: '/scanner', element: <Scanner />
-        },
+        // {
+        //   path: '/scanner', element: <Scanner />
+        // },
 
       ]
     },

@@ -48,7 +48,9 @@ const ApiClassifier = () => {
       return;
     }
     setMessageList((prev) => prev.map(message => {
+      console.log("check here!!!")
       if(message.id === count){
+        console.log("check in if statement!!!")
         return {id: message.id, image: imageUrl, classification: JSON.parse(JSON.stringify(response[0].label)).replace(/_/g, ' ')}
       }
       return message;
