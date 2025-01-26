@@ -1,0 +1,77 @@
+.classifier-page {
+  max-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+}
+
+.classifier-page__message-container {
+  width: 100%;
+  flex: 1;
+  padding: 50px 100px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow: scroll; 
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.classifier-page__message {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+.classifier-page__user-message {
+  align-self: flex-start;
+}
+
+.classifier-page__response-message {
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background-color: var(--primary-color);
+  align-self: flex-end;
+}
+
+
+.classifier-page__message p {
+  margin: 0;
+  font-size: 1.rem;
+}
+
+.classifier-page__user-message img {
+  width: 400px;
+}
+
+.message-enter{
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms;
+}
+
+.messagef-enter{
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.messagef-enter-active{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms;
+}
+
+.chat-point {
+  height: 20px;
+  position: absolute;
+  bottom: calc(0% - 20px);
+  right: 0;
+}

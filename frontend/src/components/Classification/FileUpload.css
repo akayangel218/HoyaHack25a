@@ -1,0 +1,23 @@
+.file-upload__label {
+  margin: 40px 0;
+  background-color: transparent;
+  padding: 10px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.file-upload__label:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.file-upload__input {
+  display: none;
+}
